@@ -3,8 +3,6 @@ node_modules/
 
 # Ignore compiled JavaScript files and source maps
 dist/
-*.js
-*.js.map
 
 # Ignore TypeScript build artifacts
 *.tsbuildinfo
