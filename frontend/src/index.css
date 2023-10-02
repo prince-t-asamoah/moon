@@ -7,10 +7,11 @@
 
 html,
 body,
-#root {
+#root,
+.App {
     @apply font-sans h-full overflow-auto text-base;
 }
 
-.App {
-    @apply h-full bg-boson-blue;
-}
+/* .App {
+    @apply bg-boson-blue;
+} */
