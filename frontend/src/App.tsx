@@ -14,6 +14,8 @@ export default function App() {
         setSearchTerm(e.target.value);
     };
 
+    const handleCancelSearch = () => setSearchTerm('');
+
     return (
         <div className="App">
             <header className="bg-boson-blue pt-8 px-5 lg:px-50 lg:pb-22">
@@ -46,6 +48,7 @@ export default function App() {
                     <SearchInput
                         value={searchTerm}
                         handleOnChange={handleSearchOnChange}
+                        handleCancel={handleCancelSearch}
                     />
                 </div>
             </header>

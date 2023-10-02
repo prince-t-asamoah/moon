@@ -4,15 +4,19 @@ import { IoClose } from 'react-icons/io5';
 interface SearchInputProps {
     value: string;
     handleOnChange: React.ChangeEventHandler<HTMLInputElement>;
+    handleCancel: () => void;
 }
 
 export default function SearchInput({
     value,
     handleOnChange,
+    handleCancel,
 }: SearchInputProps) {
     return (
         <div className="w-full md:w-8/12 lg:w-6/12 bg-white px-2.5 rounded-md shadow-md flex items-center justify-center relative top-5 focus-within:ring-2 focus-within:ring-lepton-lilac">
-            <AiOutlineSearch size={30} className="text-gray-400" />
+            <span>
+                <AiOutlineSearch size={30} className="text-gray-400" />
+            </span>
             <input
                 type="search"
                 className="p-1.5 h-[3rem] w-full focus:outline-none placeholder:text-gray-400 search-cancel:appearance-none"
@@ -20,13 +24,16 @@ export default function SearchInput({
                 value={value}
                 onChange={handleOnChange}
             />
-            <button
-                type="button"
-                title="Cancel search"
-                className="text-gray-500 lg:hover:text-gray-600 bg-gray-100 rounded-full transition-colors"
-            >
-                <IoClose size={28} />
-            </button>
+            {value && (
+                <button
+                    type="button"
+                    title="Cancel search"
+                    className="p-1 text-gray-500 lg:hover:text-gray-600 bg-gray-100 rounded-full transition-colors"
+                    onClick={handleCancel}
+                >
+                    <IoClose size={20} />
+                </button>
+            )}
         </div>
     );
 }
