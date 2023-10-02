@@ -53,14 +53,23 @@ export default function App() {
                 </div>
             </header>
             <main className="py-12 flex-grow flex justify-center bg-gray-100 relative">
-                <div className="w-9/12 h-fit lg:flex justify-end hidden">
-                    <a
-                        href="#"
-                        className="text-sm px-4 py-2 text-gray-100 bg-lepton-lilac hover:opacity-70 font-semibold rounded-md flex items-center gap-2 transition-opacity"
-                    >
-                        <CgMathPlus size={20} />
-                        Add task
-                    </a>
+                <div className="w-11/12">
+                    <div className="py-4 flex justify-between items-center">
+                        <span className="text-lepton-lilac">Latest</span>
+                        <a
+                            href="#"
+                            className="text-sm px-4 py-2 text-gray-100 bg-lepton-lilac hover:opacity-70 font-semibold rounded-md lg:flex items-center gap-2 transition-opacity hidden"
+                        >
+                            <CgMathPlus size={20} />
+                            Add task
+                        </a>
+                    </div>
+                    <div className="bg-white w-full shadow-md">
+                        <div className="text-sm px-5 py-3 flex justify-between">
+                            <span>5 tasks left</span>
+                            <span>Clear Completed</span>
+                        </div>
+                    </div>
                 </div>
                 <nav className="w-full h-fit px-4 py-5 flex justify-center absolute bottom-0 border-t lg:hidden">
                     <ul>
