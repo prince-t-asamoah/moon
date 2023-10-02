@@ -1,4 +1,5 @@
 import './index.css';
+import { useState } from 'react';
 import { CgMenu } from 'react-icons/cg';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BiLogOut } from 'react-icons/bi';
@@ -7,6 +8,12 @@ import { MdOutlineDarkMode } from 'react-icons/md';
 import SearchInput from './components/SearchInput';
 
 export default function App() {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(e.target.value);
+    };
+
     return (
         <div className="App">
             <header className="bg-boson-blue pt-8 px-5 lg:px-50 lg:pb-22">
@@ -36,7 +43,10 @@ export default function App() {
                     <h1 className="font-bold text-2xl text-gray-100 text-center pt-8 pb-5 tracking-[12px] lg:tracking-[20px] uppercase lg:text-3xl lg:py-10">
                         Tangled
                     </h1>
-                    <SearchInput />
+                    <SearchInput
+                        value={searchTerm}
+                        handleOnChange={handleSearchOnChange}
+                    />
                 </div>
             </header>
             <main className="flex justify-center">
