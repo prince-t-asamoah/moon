@@ -1,6 +1,6 @@
 import './index.css';
 import { useState } from 'react';
-import { CgMenu } from 'react-icons/cg';
+import { CgMathPlus, CgMenu } from 'react-icons/cg';
 import { AiOutlineUser } from 'react-icons/ai';
 import { BiLogOut } from 'react-icons/bi';
 import { MdOutlineDarkMode } from 'react-icons/md';
@@ -17,7 +17,7 @@ export default function App() {
     const handleCancelSearch = () => setSearchTerm('');
 
     return (
-        <div className="App">
+        <div className="App flex flex-col">
             <header className="bg-boson-blue pt-8 px-5 lg:px-50 lg:pb-22">
                 <div className="flex justify-end">
                     <div className="hidden relative">
@@ -52,15 +52,17 @@ export default function App() {
                     />
                 </div>
             </header>
-            <main className="flex justify-center">
-                <section className="w-8/12 px-10 py-5 flex justify-center gap-10">
-                    <button
-                        type="button"
-                        className="text-sm font-semibold text-gray-200 bg-lepton-lilac px-3.5 py-1 rounded-md hover:bg-white hover:text-lepton-lilac transition-colors"
-                    >
-                        Add task
-                    </button>
-                </section>
+            <main className="py-10 flex-grow flex justify-center bg-gray-100 relative">
+                <nav className="w-full h-fit px-4 py-5 flex justify-center absolute bottom-0 border-t lg:hidden">
+                    <ul>
+                        <li
+                            title="Add task"
+                            className="w-12 h-12 rounded-full font-semibold text-gray-100 bg-lepton-lilac px-3.5 py-1 flex items-center"
+                        >
+                            <CgMathPlus size={20} />
+                        </li>
+                    </ul>
+                </nav>
             </main>
         </div>
     );
