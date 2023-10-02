@@ -8,9 +8,9 @@ import { MdOutlineDarkMode } from 'react-icons/md';
 export default function App() {
     return (
         <div className="App">
-            <header className="bg-boson-blue pt-10 px-5 lg:px-50 lg:pb-22">
+            <header className="bg-boson-blue pt-8 px-5 lg:px-50 lg:pb-22">
                 <div className="flex justify-end">
-                    <div className="hidden lg:block relative">
+                    <div className="hidden relative">
                         <div className="bg-lepton-lilac w-10 h-10 rounded-full flex items-center justify-center hover:cursor-pointer hover:border-2 hover:border-gray-100 transition-all">
                             <span className="text-gray-100">P</span>
                         </div>
@@ -29,8 +29,7 @@ export default function App() {
                             </li>
                         </ul>
                     </div>
-
-                    <CgMenu size={28} className="text-gray-100 lg:hidden" />
+                    <CgMenu size={28} className="text-gray-100 hidden" />
                 </div>
                 <div className="flex flex-col items-center">
                     <h1 className="font-bold text-2xl text-gray-100 text-center pt-8 pb-5 tracking-[12px] lg:tracking-[20px] uppercase lg:text-3xl lg:py-10">
