@@ -1,4 +1,5 @@
 import './index.css';
+import 'react-circular-progressbar/dist/styles.css';
 import { useState } from 'react';
 import { CgMathPlus, CgMenu } from 'react-icons/cg';
 import { AiOutlineUser } from 'react-icons/ai';
@@ -6,6 +7,7 @@ import { BiLogOut } from 'react-icons/bi';
 import { MdOutlineDarkMode } from 'react-icons/md';
 
 import SearchInput from './components/SearchInput';
+import TaskItem from './components/TaskItem';
 
 export default function App() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -65,6 +67,11 @@ export default function App() {
                         </a>
                     </div>
                     <div className="bg-white w-full shadow-md">
+                        <ul>
+                            <TaskItem title="Hello" progress={20} />
+                            <TaskItem title="Design todo app" progress={50} />
+                            <TaskItem title="Learn express js" progress={60} />
+                        </ul>
                         <div className="text-sm px-5 py-3 flex justify-between">
                             <span>5 tasks left</span>
                             <span>Clear Completed</span>
