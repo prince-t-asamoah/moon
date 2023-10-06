@@ -6,7 +6,7 @@ interface AuthFooterProps {
     linkPath: string;
 }
 
-export default function AuthFooter({
+export default function AuthFormFooter({
     message,
     linkText,
     linkPath,
