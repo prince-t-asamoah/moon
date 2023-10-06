@@ -2,8 +2,8 @@ import { FaChevronLeft } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 import SignupForm from './SignupForm';
-import AuthFooter from '../components/AuthFooter';
-import AuthHeader from '../components/AuthHeader';
+import AuthFormFooter from '../components/AuthFormFooter';
+import AuthFormHeader from '../components/AuthFormHeader';
 
 export default function SignUpPage() {
     return (
@@ -21,12 +21,12 @@ export default function SignUpPage() {
                 </div>
                 <div className="flex-grow py-4 w-full flex justify-center items-center">
                     <div className="w-4/5 md:w-3/5">
-                        <AuthHeader
+                        <AuthFormHeader
                             title="Create your account"
                             subTitle="All fields are required to signup"
                         />
                         <SignupForm />
-                        <AuthFooter
+                        <AuthFormFooter
                             message="Don't have an account?"
                             linkText="Login"
                             linkPath="/login"

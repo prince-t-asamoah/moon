@@ -1,8 +1,8 @@
 import { FaChevronLeft } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import AuthFooter from '../components/AuthFooter';
-import AuthHeader from '../components/AuthHeader';
+import AuthFormFooter from '../components/AuthFormFooter';
+import AuthFormHeader from '../components/AuthFormHeader';
 
 export default function LoginPage() {
     return (
@@ -20,12 +20,12 @@ export default function LoginPage() {
                 </div>
                 <div className="flex-grow py-4 w-full flex justify-center items-center">
                     <div className="w-4/5 md:w-3/5">
-                        <AuthHeader
+                        <AuthFormHeader
                             title="Welcome back"
                             subTitle="Login to access account"
                         />
                         <LoginForm />
-                        <AuthFooter
+                        <AuthFormFooter
                             message="Don't have an account?"
                             linkText="Signup"
                             linkPath="/signup"
