@@ -6,6 +6,7 @@ import LoginPage from './features/Auth/Login/LoginPage';
 import SignUpPage from './features/Auth/Signup/SignupPage';
 import DashboardPage from './DashboardPage';
 import ForgotPasswordPage from './features/Auth/ForgotPassword/ForgotPasswordPage';
+import ResetPassword from './features/Auth/ResetPassword/ResetPasswordPage';
 
 export default function App() {
     return (
@@ -13,6 +14,7 @@ export default function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
     );
