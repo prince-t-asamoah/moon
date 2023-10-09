@@ -1,5 +1,5 @@
 import { Button } from '@nextui-org/button';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import HomeBackgroundImage from './assets/homepage-bg.svg';
 
 export default function HomePage() {
@@ -9,8 +9,24 @@ export default function HomePage() {
                 background: `url(${HomeBackgroundImage}) no-repeat`,
                 backgroundSize: 'cover',
             }}
+            className="h-screen flex flex-col"
         >
-            <main className="min-h-screen flex flex-col items-center justify-center">
+            <nav className="justify-between py-8 px-10 hidden lg:flex">
+                <NavLink to="/" className="font-semibold">
+                    Task Manager
+                </NavLink>
+                <ul className="flex gap-2">
+                    <li>
+                        <NavLink
+                            to="/"
+                            className="font-semibold py-3 hover:border-b-4 hover:border-quark-purple hover:transition-all"
+                        >
+                            Contact Us
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <main className="flex flex-col items-center flex-grow">
                 <header className="text-center">
                     <h1 className="font-bold text-2xl md:text-3xl lg:text-5xl py-3 lg:py-5">
                         An intuitive way to manage your tasks.
