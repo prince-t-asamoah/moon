@@ -7,10 +7,12 @@ import SignUpPage from './features/Auth/Signup/SignupPage';
 import DashboardPage from './DashboardPage';
 import ForgotPasswordPage from './features/Auth/ForgotPassword/ForgotPasswordPage';
 import ResetPassword from './features/Auth/ResetPassword/ResetPasswordPage';
+import HomePage from './HomePage';
 
 export default function App() {
     return (
         <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
