@@ -8,7 +8,7 @@ const formInputStyles = {
 export default function SignupForm() {
     return (
         <form>
-            <div className="flex flex-col gap-5 lg:gap-8">
+            <div className="flex flex-col gap-5 lg:gap-1">
                 <div className="flex flex-col gap-4 md:py-5">
                     <Input
                         type="text"
