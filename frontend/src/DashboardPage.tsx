@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { GoHome } from 'react-icons/go';
+import { BsChevronDown } from 'react-icons/bs';
 
 const defaultLinkStyle =
     'font-semibold text-gray-100 px-5 py-2 flex items-center gap-2 hover:bg-gray-500 rounded-md';
@@ -44,7 +45,23 @@ export default function DashboardPage() {
                 </nav>
             </aside>
             <main className="bg-gray-100 absolute right-0 top-0 bottom-0 lg:left-[16.67%] left-0">
-                Main
+                <div className="w-full bg-white px-5 py-3 shadow-sm sticky top-0 flex justify-end">
+                    <div className="flex gap-1 items-center">
+                        <button
+                            type="button"
+                            className="flex items-center gap-1"
+                        >
+                            <span className="text-white flex items-center justify-center w-9 h-9 rounded-full bg-gray-400">
+                                A
+                            </span>
+                            <BsChevronDown
+                                size={16}
+                                className="text-gray-400"
+                            />
+                        </button>
+                    </div>
+                </div>
+                <div>Main</div>
             </main>
         </div>
     );
