@@ -15,7 +15,7 @@ export default function DashboardNavBar() {
                     <ul className="flex flex-col gap-1.5 py-8">
                         <li className="px-3">
                             <NavLink
-                                to="/dashboard"
+                                to="/dashboard/home"
                                 className={({ isActive }) => {
                                     return isActive
                                         ? defaultLinkStyle + ' bg-gray-500'
@@ -34,7 +34,7 @@ export default function DashboardNavBar() {
                     <ul className="flex justify-center">
                         <li className="flex items-center justify-center">
                             <NavLink
-                                to="/dashboard"
+                                to="/dashboard/home"
                                 className="p-2 rounded-md text-gray-600"
                             >
                                 <GoHome size={28} />
