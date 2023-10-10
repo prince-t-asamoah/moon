@@ -45,7 +45,7 @@ export default function DashboardPage() {
                 </nav>
             </aside>
             <main className="bg-gray-100 absolute right-0 top-0 bottom-0 lg:left-[16.67%] left-0">
-                <div className="w-full bg-white px-5 py-3 shadow-sm sticky top-0 flex justify-end">
+                <div className="w-full border-b px-5 py-3  sticky top-0 justify-end hidden lg:flex">
                     <div className="flex gap-1 items-center">
                         <button
                             type="button"
@@ -61,7 +61,12 @@ export default function DashboardPage() {
                         </button>
                     </div>
                 </div>
-                <div>Main</div>
+                <div>
+                    <h1 className="text-gray-700 font-bold text-lg lg:text-2xl p-5 md:p-8 flex items-center gap-2">
+                        <GoHome size={28} />
+                        <span>Home</span>
+                    </h1>
+                </div>
             </main>
         </div>
     );
