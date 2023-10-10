@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 
 import LoginPage from './features/Auth/Login/LoginPage';
 import SignUpPage from './features/Auth/Signup/SignupPage';
-import DashboardPage from './DashboardPage';
+import DashboardPage from './pages/DashboardPage';
 import ForgotPasswordPage from './features/Auth/ForgotPassword/ForgotPasswordPage';
 import ResetPassword from './features/Auth/ResetPassword/ResetPasswordPage';
-import HomePage from './HomePage';
+import HomePage from './pages/HomePage';
 
 export default function App() {
     return (

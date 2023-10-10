@@ -1,6 +1,6 @@
 import { GoHome } from 'react-icons/go';
 import { BsChevronDown } from 'react-icons/bs';
-import DashboardNavBar from './components/DashboardNavBar';
+import DashboardNavBar from '../components/DashboardNavBar';
 
 export default function DashboardPage() {
     return (

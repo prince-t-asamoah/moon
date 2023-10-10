@@ -1,6 +1,6 @@
 import { Button } from '@nextui-org/button';
 import { Link, NavLink } from 'react-router-dom';
-import HomeBackgroundImage from './assets/homepage-bg.svg';
+import HomeBackgroundImage from '../assets/homepage-bg.svg';
 
 export default function HomePage() {
     return (
