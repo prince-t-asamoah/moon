@@ -13,7 +13,7 @@ export default function DashboardPage() {
                     <span className="text-gray-100 text-xl">Task Manager</span>
                 </div>
                 <nav className="flex-grow">
-                    <ul>
+                    <ul className="flex flex-col gap-1.5">
                         <li className="px-2">
                             <NavLink
                                 to="/dashboard"
@@ -45,7 +45,11 @@ export default function DashboardPage() {
                 </nav>
             </aside>
             <main className="bg-gray-100 absolute right-0 top-0 bottom-0 lg:left-[16.67%] left-0">
-                <div className="w-full border-b px-5 py-3  sticky top-0 justify-end hidden lg:flex">
+                <header className="w-full border-b px-8 py-3 sticky top-0 justify-between hidden lg:flex">
+                    <h1 className="text-gray-700 font-semibold flex items-center gap-2">
+                        <GoHome size={18} />
+                        <span>Home</span>
+                    </h1>
                     <div className="flex gap-1 items-center">
                         <button
                             type="button"
@@ -60,12 +64,11 @@ export default function DashboardPage() {
                             />
                         </button>
                     </div>
-                </div>
+                </header>
                 <div>
-                    <h1 className="text-gray-700 font-bold text-lg lg:text-2xl p-5 md:p-8 flex items-center gap-2">
-                        <GoHome size={28} />
-                        <span>Home</span>
-                    </h1>
+                    <h2 className="text-gray-700 font-bold text-lg lg:text-2xl p-5 md:p-8 flex items-center gap-2">
+                        Home
+                    </h2>
                 </div>
             </main>
         </div>
