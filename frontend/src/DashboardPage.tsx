@@ -3,18 +3,18 @@ import { GoHome } from 'react-icons/go';
 import { BsChevronDown } from 'react-icons/bs';
 
 const defaultLinkStyle =
-    'font-semibold text-gray-100 px-5 py-2 flex items-center gap-2 hover:bg-gray-500 rounded-md';
+    'text-gray-100 px-5 py-2 flex items-center gap-2 hover:bg-gray-500 rounded-md';
 
 export default function DashboardPage() {
     return (
         <div className="h-screen relative">
             <aside className="bg-boson-blue absolute left-0 top-0 h-full w-2/12 hidden lg:flex flex-col">
-                <div className="px-8 py-5">
+                <div className="px-4 py-4">
                     <span className="text-gray-100 text-xl">Task Manager</span>
                 </div>
                 <nav className="flex-grow">
-                    <ul className="flex flex-col gap-1.5">
-                        <li className="px-2">
+                    <ul className="flex flex-col gap-1.5 py-8">
+                        <li className="px-3">
                             <NavLink
                                 to="/dashboard"
                                 className={({ isActive }) => {
@@ -66,7 +66,7 @@ export default function DashboardPage() {
                     </div>
                 </header>
                 <div>
-                    <h2 className="text-gray-700 font-bold text-lg lg:text-2xl p-5 md:p-8 flex items-center gap-2">
+                    <h2 className="text-gray-700 font-bold text-lg lg:text-2xl px-5 py-4 md:p-8 flex items-center gap-2">
                         Home
                     </h2>
                 </div>
