@@ -29,7 +29,7 @@ export default function DashboardNavBar() {
                     </ul>
                 </nav>
             </aside>
-            <aside className="w-full p-5 fixed bottom-0 z-10 bg-white rounded-t-2xl lg:hidden">
+            <aside className="w-full px-5 py-2 fixed bottom-0 z-10 bg-white rounded-t-2xl lg:hidden">
                 <nav>
                     <ul className="flex justify-center">
                         <li className="flex items-center justify-center">
