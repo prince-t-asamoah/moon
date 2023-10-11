@@ -2,6 +2,7 @@ import { BsChevronDown } from 'react-icons/bs';
 import { GoHome } from 'react-icons/go';
 import { TbLogout } from 'react-icons/tb';
 import { IoSettingsOutline } from 'react-icons/io5';
+import { MdOutlineDarkMode } from 'react-icons/md';
 import {
     Dropdown,
     DropdownTrigger,
@@ -9,46 +10,112 @@ import {
     DropdownItem,
     Avatar,
     User,
+    Navbar,
+    NavbarContent,
+    NavbarMenu,
+    NavbarMenuItem,
+    NavbarMenuToggle,
+    DropdownSection,
+    Switch,
 } from '@nextui-org/react';
 
 export default function DashboardHeader() {
     return (
-        <header className="w-full border-b px-8 py-3 sticky top-0 justify-between hidden lg:flex">
-            <h1 className="text-gray-700 font-semibold flex items-center gap-2">
-                <GoHome size={18} />
-                <span>Home</span>
-            </h1>
-            <Dropdown>
-                <DropdownTrigger>
-                    <button
-                        type="button"
-                        className="flex items-center gap-1 outline-none"
-                    >
-                        <Avatar name="Prince Asamoah" />
-                        <BsChevronDown size={16} className="text-gray-400" />
-                    </button>
-                </DropdownTrigger>
-                <DropdownMenu>
-                    <DropdownItem key="profile" isReadOnly>
-                        <User
-                            name="Prince Asamoah"
-                            description="prince.t.asamoah@gmail.com"
-                        />
-                    </DropdownItem>
-                    <DropdownItem
-                        key="settings"
-                        startContent={<IoSettingsOutline size={18} />}
-                    >
-                        Settings
-                    </DropdownItem>
-                    <DropdownItem
-                        key="logout"
-                        startContent={<TbLogout size={18} />}
-                    >
-                        Logout
-                    </DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-        </header>
+        <Navbar
+            className="bg-gray-100 lg:bg-white border-b lg:border-none lg:shadow-sm"
+            maxWidth="full"
+        >
+            <NavbarContent className="lg:hidden" justify="end">
+                <NavbarMenuToggle />
+            </NavbarContent>
+            <NavbarContent
+                className="hidden lg:flex lg:justify-between"
+                justify="start"
+            >
+                <h1 className="text-gray-700 font-semibold flex items-center gap-2">
+                    <GoHome size={18} />
+                    <span>Home</span>
+                </h1>
+            </NavbarContent>
+            <NavbarContent justify="end" className="hidden lg:flex">
+                <Dropdown>
+                    <DropdownTrigger>
+                        <button
+                            type="button"
+                            className="flex items-center gap-1 outline-none"
+                        >
+                            <Avatar name="Prince Asamoah" />
+                            <BsChevronDown
+                                size={16}
+                                className="text-gray-400"
+                            />
+                        </button>
+                    </DropdownTrigger>
+                    <DropdownMenu>
+                        <DropdownSection showDivider>
+                            <DropdownItem key="profile" isReadOnly>
+                                <User
+                                    name="Prince Asamoah"
+                                    description="prince.t.asamoah@gmail.com"
+                                />
+                            </DropdownItem>
+                        </DropdownSection>
+                        <DropdownSection showDivider>
+                            <DropdownItem
+                                key="settings"
+                                startContent={<IoSettingsOutline size={18} />}
+                            >
+                                Settings
+                            </DropdownItem>
+                            <DropdownItem
+                                key="dark-mode"
+                                startContent={<MdOutlineDarkMode size={18} />}
+                                endContent={
+                                    <Switch
+                                        defaultSelected
+                                        size="sm"
+                                        classNames={{
+                                            wrapper: 'h-5',
+                                        }}
+                                    />
+                                }
+                            >
+                                Dark Mode
+                            </DropdownItem>
+                        </DropdownSection>
+                        <DropdownItem
+                            key="logout"
+                            startContent={<TbLogout size={18} />}
+                        >
+                            Logout
+                        </DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
+            </NavbarContent>
+            <NavbarMenu className=" bg-gray-100 p-0">
+                <NavbarMenuItem className="hidden lg:block"></NavbarMenuItem>
+                <NavbarMenuItem className="py-4 px-5">
+                    <User
+                        name="Prince Asamoah"
+                        description="prince.t.asamoah@gmail.com"
+                    />
+                </NavbarMenuItem>
+                <NavbarMenuItem className="flex items-center gap-2 px-5 py-2 border-t">
+                    <IoSettingsOutline size={24} />
+                    Settings
+                </NavbarMenuItem>
+                <NavbarMenuItem className="flex items-center justify-between px-5 py-2">
+                    <span className="flex items-center gap-2">
+                        <MdOutlineDarkMode size={24} />
+                        Dark Mode
+                    </span>
+                    <Switch defaultSelected size="sm" />
+                </NavbarMenuItem>
+                <NavbarMenuItem className="flex items-center gap-2 px-5 py-2 border-t">
+                    <TbLogout size={24} />
+                    Logout
+                </NavbarMenuItem>
+            </NavbarMenu>
+        </Navbar>
     );
 }
