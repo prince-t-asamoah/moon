@@ -19,6 +19,8 @@ import {
     Switch,
 } from '@nextui-org/react';
 
+const navMenuItemStyles = 'flex items-center gap-2 px-5 py-2 border-t';
+
 export default function DashboardHeader() {
     return (
         <Navbar
@@ -93,25 +95,24 @@ export default function DashboardHeader() {
                 </Dropdown>
             </NavbarContent>
             <NavbarMenu className=" bg-gray-100 p-0">
-                <NavbarMenuItem className="hidden lg:block"></NavbarMenuItem>
                 <NavbarMenuItem className="py-4 px-5">
                     <User
                         name="Prince Asamoah"
                         description="prince.t.asamoah@gmail.com"
                     />
                 </NavbarMenuItem>
-                <NavbarMenuItem className="flex items-center gap-2 px-5 py-2 border-t">
+                <NavbarMenuItem className={navMenuItemStyles}>
                     <IoSettingsOutline size={24} />
                     Settings
                 </NavbarMenuItem>
-                <NavbarMenuItem className="flex items-center justify-between px-5 py-2">
+                <NavbarMenuItem className={navMenuItemStyles}>
                     <span className="flex items-center gap-2">
                         <MdOutlineDarkMode size={24} />
                         Dark Mode
                     </span>
                     <Switch defaultSelected size="sm" />
                 </NavbarMenuItem>
-                <NavbarMenuItem className="flex items-center gap-2 px-5 py-2 border-t">
+                <NavbarMenuItem className={navMenuItemStyles}>
                     <TbLogout size={24} />
                     Logout
                 </NavbarMenuItem>
