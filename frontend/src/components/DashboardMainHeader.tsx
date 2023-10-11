@@ -1,5 +1,15 @@
 import { BsChevronDown } from 'react-icons/bs';
 import { GoHome } from 'react-icons/go';
+import { TbLogout } from 'react-icons/tb';
+import { IoSettingsOutline } from 'react-icons/io5';
+import {
+    Dropdown,
+    DropdownTrigger,
+    DropdownMenu,
+    DropdownItem,
+    Avatar,
+    User,
+} from '@nextui-org/react';
 
 export default function DashboardHeader() {
     return (
@@ -8,14 +18,37 @@ export default function DashboardHeader() {
                 <GoHome size={18} />
                 <span>Home</span>
             </h1>
-            <div className="flex gap-1 items-center">
-                <button type="button" className="flex items-center gap-1">
-                    <span className="text-white flex items-center justify-center w-9 h-9 rounded-full bg-gray-400">
-                        A
-                    </span>
-                    <BsChevronDown size={16} className="text-gray-400" />
-                </button>
-            </div>
+            <Dropdown>
+                <DropdownTrigger>
+                    <button
+                        type="button"
+                        className="flex items-center gap-1 outline-none"
+                    >
+                        <Avatar name="Prince Asamoah" />
+                        <BsChevronDown size={16} className="text-gray-400" />
+                    </button>
+                </DropdownTrigger>
+                <DropdownMenu>
+                    <DropdownItem key="profile" isReadOnly>
+                        <User
+                            name="Prince Asamoah"
+                            description="prince.t.asamoah@gmail.com"
+                        />
+                    </DropdownItem>
+                    <DropdownItem
+                        key="settings"
+                        startContent={<IoSettingsOutline size={18} />}
+                    >
+                        Settings
+                    </DropdownItem>
+                    <DropdownItem
+                        key="logout"
+                        startContent={<TbLogout size={18} />}
+                    >
+                        Logout
+                    </DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
         </header>
     );
 }
