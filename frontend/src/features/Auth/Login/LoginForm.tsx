@@ -1,8 +1,8 @@
 import { Button, Checkbox, Input } from '@nextui-org/react';
-import { useForm, SubmitHandler } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { schema } from '../util/valitations';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
@@ -13,14 +13,6 @@ interface LoginFormData {
     email: string;
     password: string;
 }
-
-const schema = yup.object().shape({
-    email: yup
-        .string()
-        .required('Email is required')
-        .email('Invalid email format'),
-    password: yup.string().required('Password is required'),
-});
 
 export default function LoginForm() {
     const {

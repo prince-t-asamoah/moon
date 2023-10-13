@@ -1,7 +1,7 @@
 import { Button, Input } from '@nextui-org/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { schema } from '../util/valitations';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
@@ -15,27 +15,6 @@ interface SignupFormData {
     password: string;
     confirmPassword: string;
 }
-
-const schema = yup.object().shape({
-    firstName: yup.string().required('First Name is required'),
-    lastName: yup.string().required('Last Name is required'),
-    email: yup
-        .string()
-        .required('Email is required')
-        .email('Invalid email format'),
-    password: yup
-        .string()
-        .required('Password is required')
-        .matches(
-            /^(?=.*[a-zA-Z])(?=.*\d)/,
-            'Password must contain at least one letter and one number'
-        )
-        .min(8, 'Password must be at least 8 characters long'),
-    confirmPassword: yup
-        .string()
-        .required('Confirm password is required')
-        .oneOf([yup.ref('password')], 'Passwords must match'),
-});
 
 export default function SignupForm() {
     const {
