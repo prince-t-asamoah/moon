@@ -1,5 +1,7 @@
 import { Button, Input } from '@nextui-org/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
@@ -14,8 +16,35 @@ interface SignupFormData {
     confirmPassword: string;
 }
 
+const schema = yup.object().shape({
+    firstName: yup.string().required('First Name is required'),
+    lastName: yup.string().required('Last Name is required'),
+    email: yup
+        .string()
+        .required('Email is required')
+        .email('Invalid email format'),
+    password: yup
+        .string()
+        .required('Password is required')
+        .matches(
+            /^(?=.*[a-zA-Z])(?=.*\d)/,
+            'Password must contain at least one letter and one number'
+        )
+        .min(8, 'Password must be at least 8 characters long'),
+    confirmPassword: yup
+        .string()
+        .required('Confirm password is required')
+        .oneOf([yup.ref('password')], 'Passwords must match'),
+});
+
 export default function SignupForm() {
-    const { register, handleSubmit } = useForm<SignupFormData>();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
 
     const handleSignup: SubmitHandler<SignupFormData> = () => {};
 
@@ -29,6 +58,8 @@ export default function SignupForm() {
                         placeholder="Enter your first name"
                         classNames={formInputStyles}
                         {...register('firstName')}
+                        errorMessage={errors.firstName?.message}
+                        isInvalid={!!errors.firstName?.message}
                     />
                     <Input
                         type="text"
@@ -36,6 +67,8 @@ export default function SignupForm() {
                         placeholder="Enter your last name"
                         classNames={formInputStyles}
                         {...register('lastName')}
+                        errorMessage={errors.lastName?.message}
+                        isInvalid={!!errors.lastName?.message}
                     />
                     <Input
                         type="email"
@@ -43,6 +76,8 @@ export default function SignupForm() {
                         placeholder="Enter your email"
                         classNames={formInputStyles}
                         {...register('email')}
+                        errorMessage={errors.email?.message}
+                        isInvalid={!!errors.email?.message}
                     />
                     <Input
                         type="password"
@@ -50,6 +85,8 @@ export default function SignupForm() {
                         placeholder="Enter your password"
                         classNames={formInputStyles}
                         {...register('password')}
+                        errorMessage={errors.password?.message}
+                        isInvalid={!!errors.password?.message}
                     />
                     <Input
                         type="password"
@@ -57,6 +94,8 @@ export default function SignupForm() {
                         placeholder="Enter your password again"
                         classNames={formInputStyles}
                         {...register('confirmPassword')}
+                        errorMessage={errors.confirmPassword?.message}
+                        isInvalid={!!errors.confirmPassword?.message}
                     />
                 </div>
                 <Button
