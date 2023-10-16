@@ -8,4 +8,6 @@ app.listen(PORT, () =>
     console.log(`Application server running on port ${PORT}`)
 );
 
+app.use(express.json());
+
 app.use("/", homeRoute);
