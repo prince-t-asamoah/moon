@@ -1,8 +1,8 @@
-# Task Management App
+# Moon
 
 ## Project Description
 
-The Task Management App is a web application that helps users manage their tasks efficiently. It provides a user-friendly interface for creating, updating, and organizing tasks. With this app, you can keep track of your to-do list and stay organized.
+Moon is a web application that helps users manage their tasks efficiently. It provides a user-friendly interface for creating, updating, and organizing tasks. With this app, you can keep track of your to-do list and stay organized.
 
 ## Key Features
 
