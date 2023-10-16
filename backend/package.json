@@ -1,7 +1,7 @@
 {
-  "name": "task-app-backend",
+  "name": "moon-backend",
   "version": "1.0.0",
-  "description": "A backend server for a Task Management App built with Express.js and TypeScript.",
+  "description": "A backend server for moon app built with Express.js and TypeScript.",
   "main": "index.ts",
   "scripts": {
     "start": "nodemon index.ts"
