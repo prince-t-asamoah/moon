@@ -5,24 +5,24 @@ import { validateSignupData } from '../middlewares/authMiddlewares';
 
 const authRoute = Router();
 
-authRoute.post('/signup', validateSignupData, (req, res) => {
+authRoute.post('/signup', validateSignupData, async (req, res) => {
     const { firstName, lastName, otherName, email, password } =
         req.body as SignupDTO;
     bcrypt.hash(password, 10, async function (err: any, hashPassword: string) {
         if (err) {
             return res.status(500).json({
-                error: {
-                    status: '500',
-                    title: 'Internal server error',
-                    description: 'Error while encrypting password',
-                },
+                errors: [
+                    {
+                        status: '500',
+                        message: 'Internal server error',
+                    },
+                ],
             });
         }
         res.status(201).json({
             success: {
                 status: '201',
-                title: 'Account creation successful',
-                description: 'New user added successfully',
+                message: 'Account creation successful',
             },
             data: {
                 firstName,
