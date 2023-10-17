@@ -2,7 +2,6 @@
   "name": "moon-backend",
   "version": "1.0.0",
   "description": "A backend server for moon app built with Express.js and TypeScript.",
-  "type": "module",
   "scripts": {
     "dev": "nodemon"
   },
