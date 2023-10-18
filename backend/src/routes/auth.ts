@@ -41,9 +41,15 @@ authRoute.post('/signup', validateSignupData, (req, res) => {
                 });
             }
         } catch (error) {
-            if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002")
+            if (
+                error instanceof Prisma.PrismaClientKnownRequestError &&
+                error.code === 'P2002'
+            )
                 return res.status(500).json({
-                    error: { status: '500', message: "Email already exist, try another email" },
+                    error: {
+                        status: '500',
+                        message: 'Email already exist, try another email',
+                    },
                 });
         }
     });
