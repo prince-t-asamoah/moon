@@ -10,14 +10,7 @@ export default function loginUser(req: Request, res: Response) {
 
     bcrypt.hash(password, 10, async function (err: any, hashPassword: string) {
         if (err) {
-            return res.status(500).json({
-                errors: [
-                    {
-                        status: '500',
-                        message: 'Internal server error',
-                    },
-                ],
-            });
+            throw err;
         }
 
         try {
@@ -41,7 +34,8 @@ export default function loginUser(req: Request, res: Response) {
             if (
                 error instanceof Prisma.PrismaClientKnownRequestError &&
                 error.code === 'P2002'
-            )
+                )
+                console.error(error);
                 return res.status(500).json({
                     error: {
                         status: '500',
