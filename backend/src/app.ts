@@ -1,7 +1,8 @@
 import express from 'express';
+import dotenv from 'dotenv';
 import homeRoute from './routes/home';
 import authRoute from './routes/auth';
-import dotenv from 'dotenv';
+import { errorHandler } from './middlewares/errorHandler';
 
 const app = express();
 const PORT = process.env.PORT ?? 5000;
@@ -15,3 +16,4 @@ app.use(express.json());
 
 app.use('/', homeRoute);
 app.use('/auth', authRoute);
+app.use(errorHandler);
