@@ -18,10 +18,22 @@ import {
     DropdownSection,
     Switch,
 } from '@nextui-org/react';
+import { useNavigate } from 'react-router-dom';
+import { getAuth } from '../util/getAuth';
 
 const navMenuItemStyles = 'flex items-center gap-2 px-5 py-2 border-t';
 
 export default function DashboardHeader() {
+    const navigate = useNavigate();
+
+    const logout = () => {
+        sessionStorage.removeItem('auth');
+        const auth = getAuth();
+        if (!auth) {
+            navigate('/login', { replace: true });
+        }
+    };
+
     return (
         <Navbar
             className="bg-gray-100 lg:bg-white border-b lg:border-none lg:shadow-sm"
@@ -88,6 +100,7 @@ export default function DashboardHeader() {
                         <DropdownItem
                             key="logout"
                             startContent={<TbLogout size={18} />}
+                            onClick={logout}
                         >
                             Logout
                         </DropdownItem>
