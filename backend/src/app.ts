@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from "cors";
 import homeRoute from './routes/home';
 import authRoute from './routes/auth';
 import { errorHandler } from './middlewares/errorHandler';
@@ -13,7 +14,7 @@ app.listen(PORT, () =>
 );
 
 app.use(express.json());
-
+app.use(cors({ origin: "*"}))
 app.use('/', homeRoute);
 app.use('/auth', authRoute);
 app.use(errorHandler);
