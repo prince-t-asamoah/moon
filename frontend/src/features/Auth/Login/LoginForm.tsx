@@ -1,8 +1,12 @@
 import { Button, Checkbox, Input } from '@nextui-org/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../util/valitations';
+import { useState } from 'react';
+
+import { loginSchema } from '../util/valitations';
+import { loginAPI } from '../apis/loginAPI';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
@@ -20,10 +24,30 @@ export default function LoginForm() {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(loginSchema),
     });
+    const navigate = useNavigate();
+    const [isSubmiting, setIsSubmiting] = useState(false);
 
-    const handleLogin: SubmitHandler<LoginFormData> = () => {};
+    const handleLogin: SubmitHandler<LoginFormData> = (data: LoginFormData) => {
+        setIsSubmiting(true);
+        loginAPI(data)
+            .then((response) => {
+                if (response) {
+                    setIsSubmiting(false);
+                    toast.success('Login successful');
+                    sessionStorage.setItem(
+                        'auth',
+                        JSON.stringify(response.data)
+                    );
+                    navigate('/dashboard/home');
+                }
+            })
+            .catch((error) => {
+                setIsSubmiting(false);
+                toast.error(error.message);
+            });
+    };
 
     return (
         <form onSubmit={handleSubmit(handleLogin)}>
@@ -36,6 +60,7 @@ export default function LoginForm() {
                     {...register('email')}
                     errorMessage={errors.email?.message}
                     isInvalid={!!errors.email?.message}
+                    disabled={isSubmiting}
                 />
                 <Input
                     type="password"
@@ -45,6 +70,7 @@ export default function LoginForm() {
                     {...register('password')}
                     errorMessage={errors.password?.message}
                     isInvalid={!!errors.password?.message}
+                    disabled={isSubmiting}
                 />
             </div>
             <div className="text-sm flex justify-between py-4 md:py-3">
@@ -64,6 +90,7 @@ export default function LoginForm() {
                     size="lg"
                     radius="sm"
                     className="w-full font-semibold bg-boson-blue lg:hover:opacity-70 lg:transition-all text-gray-100"
+                    isLoading={isSubmiting}
                 >
                     Login
                 </Button>
