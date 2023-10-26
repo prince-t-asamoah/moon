@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 
 import { loginSchema } from '../util/valitations';
-import { loginAPI } from '../apis/loginAPI';
+import { loginAPI } from '../apis/authAPI';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
