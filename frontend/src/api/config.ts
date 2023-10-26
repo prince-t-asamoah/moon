@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
-import { AuthUser } from '../features/Auth/types/authTypes';
+import { getAuth } from '../util/getAuth';
 
 function createAxiosInstance(headers: object): AxiosInstance {
     const baseURL = import.meta.env.VITE_APP_BASEURL;
@@ -11,7 +11,7 @@ function createAxiosInstance(headers: object): AxiosInstance {
     });
 
     instance.interceptors.request.use((config) => {
-        const auth: AuthUser = JSON.parse(sessionStorage.getItem('auth') ?? "{}");
+        const auth = getAuth();
         if (auth) {
             config.headers.Authorization = `Bearer ${auth.token}`;
         }
@@ -20,9 +20,7 @@ function createAxiosInstance(headers: object): AxiosInstance {
     return instance;
 }
 
-const API_CLIENT: AxiosInstance = createAxiosInstance({
+export const API_CLIENT: AxiosInstance = createAxiosInstance({
     'Content-Type': 'application/json',
     Accept: 'application/json',
 });
-
-export { API_CLIENT };
