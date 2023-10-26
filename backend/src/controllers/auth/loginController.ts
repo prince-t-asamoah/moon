@@ -12,13 +12,13 @@ export default async function loginUser(req: Request, res: Response) {
     const user = await db.user.findUnique({ where: { email } });
     if (!user) {
         return res.status(400).json({
-            errors: [{ status: '400', message: 'Invalid credentials' }],
+            error: { status: '400', message: 'Invalid credentials' },
         });
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
         return res.status(400).json({
-            errors: [{ status: '400', message: 'Invalid credentials' }],
+            error: { status: '400', message: 'Invalid credentials' },
         });
     }
     const token = jwt.sign({ userId: user.id }, jwtSecret, {
