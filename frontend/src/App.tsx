@@ -3,6 +3,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
+import ProtectedRoute from './components/ProtectedRoute';
 import LoginPage from './features/Auth/Login/LoginPage';
 import SignUpPage from './features/Auth/Signup/SignupPage';
 import DashboardPage from './pages/DashboardPage';
@@ -23,7 +24,10 @@ export default function App() {
                     element={<ForgotPasswordPage />}
                 />
                 <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/dashboard/*" element={<DashboardPage />} />
+                <Route
+                    path="/dashboard/*"
+                    element={<ProtectedRoute component={<DashboardPage />} />}
+                />
             </Routes>
         </>
     );
