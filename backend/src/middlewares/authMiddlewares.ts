@@ -15,7 +15,7 @@ function validateData(
             customErrors.push({ status: '400', message: detail.message });
         });
         return res.status(400).json({
-            errors: customErrors,
+            error: customErrors,
         });
     } else {
         next();
