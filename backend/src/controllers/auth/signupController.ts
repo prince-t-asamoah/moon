@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { SignupDTO } from '../../@types/authDTO';
 import { db } from '../../prisma/client';
 
-export default function loginUser(req: Request, res: Response) {
+export default function signupUser(req: Request, res: Response) {
     const { firstName, lastName, email, password } = req.body as SignupDTO;
 
     bcrypt.hash(password, 10, async function (err: any, hashPassword: string) {
@@ -35,7 +35,6 @@ export default function loginUser(req: Request, res: Response) {
                 error instanceof Prisma.PrismaClientKnownRequestError &&
                 error.code === 'P2002'
                 )
-                console.error(error);
                 return res.status(500).json({
                     error: {
                         status: '500',
