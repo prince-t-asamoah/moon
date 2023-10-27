@@ -20,19 +20,28 @@ import {
 } from '@nextui-org/react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth } from '../util/getAuth';
+import { useEffect, useState } from 'react';
+import { AuthUser } from '../features/Auth/types/authTypes';
 
 const navMenuItemStyles = 'flex items-center gap-2 px-5 py-2 border-t';
 
 export default function DashboardHeader() {
     const navigate = useNavigate();
+    const [auth, setAuth] = useState<AuthUser | null>(null);
 
     const logout = () => {
         sessionStorage.removeItem('auth');
-        const auth = getAuth();
         if (!auth) {
             navigate('/login', { replace: true });
         }
     };
+
+    useEffect(() => {
+        const auth = getAuth();
+        if (auth) {
+            setAuth(auth);
+        }
+    }, []);
 
     return (
         <Navbar
@@ -69,8 +78,8 @@ export default function DashboardHeader() {
                         <DropdownSection showDivider>
                             <DropdownItem key="profile" isReadOnly>
                                 <User
-                                    name="Prince Asamoah"
-                                    description="prince.t.asamoah@gmail.com"
+                                    name={`${auth?.user.firstName} ${auth?.user.lastName}`}
+                                    description={auth?.user.email}
                                 />
                             </DropdownItem>
                         </DropdownSection>
@@ -108,10 +117,10 @@ export default function DashboardHeader() {
                 </Dropdown>
             </NavbarContent>
             <NavbarMenu className=" bg-gray-100 p-0">
-                <NavbarMenuItem className="py-4 px-5">
+                <NavbarMenuItem className="py-4 px-5" aria-label="User">
                     <User
-                        name="Prince Asamoah"
-                        description="prince.t.asamoah@gmail.com"
+                        name={`${auth?.user.firstName} ${auth?.user.lastName}`}
+                        description={auth?.user.email}
                     />
                 </NavbarMenuItem>
                 <NavbarMenuItem className={navMenuItemStyles}>
