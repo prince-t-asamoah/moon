@@ -1,20 +1,18 @@
 import { Button, Input } from '@nextui-org/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../util/valitations';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
+import { signupSchema } from '../util/valitations';
+import { SignUpFormData } from '../types/authTypes';
+import { signupAPI } from '../apis/authAPI';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
     input: 'lg:text-medium',
 };
-
-interface SignupFormData {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
 
 export default function SignupForm() {
     const {
@@ -22,10 +20,29 @@ export default function SignupForm() {
         handleSubmit,
         formState: { errors },
     } = useForm({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(signupSchema),
     });
+    const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSignup: SubmitHandler<SignupFormData> = () => {};
+    const handleSignup: SubmitHandler<SignUpFormData> = (
+        data: SignUpFormData
+    ) => {
+        const { firstName, lastName, email, password } = data;
+        setIsSubmitting(true);
+        signupAPI({ firstName, lastName, email, password })
+            .then((response) => {
+                if (response) {
+                    setIsSubmitting(false);
+                    toast.success('Signup successful');
+                    navigate('/login');
+                }
+            })
+            .catch((error) => {
+                setIsSubmitting(false);
+                toast.error(error.message || error[0].message);
+            });
+    };
 
     return (
         <form onSubmit={handleSubmit(handleSignup)}>
@@ -82,6 +99,7 @@ export default function SignupForm() {
                     size="lg"
                     radius="sm"
                     className="font-semibold bg-boson-blue lg:hover:opacity-70 lg:transition-all text-gray-100"
+                    isLoading={isSubmitting}
                 >
                     Signup
                 </Button>
