@@ -45,7 +45,6 @@ export default async function forgotPassword(req: Request, res: Response) {
     };
     transporter.sendMail(emailOptions, (err) => {
         if (err) {
-            console.error(err);
             throw err;
         } else {
             res.status(200).send({
