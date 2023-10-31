@@ -4,5 +4,5 @@ export const errorHandler = (error: Error, _req: Request, res: Response) => {
     console.log(error);
     return res
         .status(500)
-        .json({ errors: [{ message: 'Internal server error' }] });
+        .json({ error: { status: '500', message: 'Internal server error' } });
 };
