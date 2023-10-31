@@ -6,7 +6,10 @@ export const signupSchema = Joi.object({
         .min(3)
         .required()
         .messages(validationMessages.firstName),
-    lastName: Joi.string().min(3).required().messages(validationMessages.lastName),
+    lastName: Joi.string()
+        .min(3)
+        .required()
+        .messages(validationMessages.lastName),
     email: Joi.string().email().required().messages(validationMessages.email),
     password: Joi.string()
         .regex(/^(?=.*[a-zA-Z])(?=.*\d)/)
@@ -17,4 +20,8 @@ export const signupSchema = Joi.object({
 export const loginSchema = Joi.object({
     email: Joi.string().email().required().messages(validationMessages.email),
     password: Joi.string().required().messages(validationMessages.password),
+});
+
+export const forgotPasswordSchema = Joi.object({
+    email: Joi.string().email().required().messages(validationMessages.email),
 });
