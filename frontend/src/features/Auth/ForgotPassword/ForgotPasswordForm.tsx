@@ -1,27 +1,41 @@
 import { Button, Input } from '@nextui-org/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from '../util/valitations';
+import { forgotPasswordSchema } from '../util/valitations';
+import { forgotPasswordAPI } from '../apis/authAPI';
+import { ForgotPasswordFormData } from '../types/authTypes';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
 
 const formInputStyles = {
     label: 'lg:text-[0.9375rem] lg:py-1.5 text-gray-950 font-semibold',
     input: 'lg:text-medium',
 };
 
-interface ForgotPasswordFormData {
-    email: string;
-}
-
 export default function ForgotPasswordForm() {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({ resolver: yupResolver(schema) });
+    } = useForm({ resolver: yupResolver(forgotPasswordSchema) });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleForgotPassword: SubmitHandler<
-        ForgotPasswordFormData
-    > = () => {};
+    const handleForgotPassword: SubmitHandler<ForgotPasswordFormData> = (
+        data: ForgotPasswordFormData
+    ) => {
+        setIsSubmitting(true);
+        forgotPasswordAPI(data)
+            .then((response) => {
+                if (response) {
+                    setIsSubmitting(false);
+                    toast.success('Reset link sent to email');
+                }
+            })
+            .catch((error) => {
+                setIsSubmitting(false);
+                toast.error(error);
+            });
+    };
 
     return (
         <form onSubmit={handleSubmit(handleForgotPassword)}>
@@ -42,6 +56,7 @@ export default function ForgotPasswordForm() {
                     size="lg"
                     radius="sm"
                     className="w-full font-semibold bg-boson-blue lg:hover:opacity-70 lg:transition-all text-gray-100"
+                    isLoading={isSubmitting}
                 >
                     Send reset link
                 </Button>
