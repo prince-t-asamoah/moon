@@ -56,3 +56,10 @@ export const schema = yup.object().shape({
         .required('Email is required')
         .email('Invalid email format'),
 });
+
+export const forgotPasswordSchema = yup.object().shape({
+    email: yup
+        .string()
+        .required('Email is required')
+        .email('Invalid email format'),
+});
