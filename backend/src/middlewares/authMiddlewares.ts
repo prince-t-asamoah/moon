@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
-import { loginSchema, signupSchema } from '../data/authSchemaData';
+import { forgotPasswordSchema, loginSchema, signupSchema } from '../data/authSchemaData';
 
 function validateData(
     schema: Joi.Schema,
@@ -37,3 +37,12 @@ export function validateLoginData(
 ) {
     validateData(loginSchema, req, res, next);
 }
+
+export function validateForgotPasswordData(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    validateData(forgotPasswordSchema, req, res, next);
+}
+
