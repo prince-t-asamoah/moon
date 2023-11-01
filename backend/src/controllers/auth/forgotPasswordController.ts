@@ -19,7 +19,7 @@ export default async function forgotPassword(req: Request, res: Response) {
 
     const secretKey = process.env.JWT_SECRET ?? '';
     const resetToken = jwt.sign({ email }, secretKey, { expiresIn: '15m' });
-    const resetLink = `${process.env.FRONTEND_BASE_URL}/reset-password/${resetToken}`;
+    const resetLink = `${process.env.FRONTEND_BASE_URL}/reset-password?token=${resetToken}`;
 
     const transporter = nodemailer.createTransport({
         name: 'moon-app',
