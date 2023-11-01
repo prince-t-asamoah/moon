@@ -1,5 +1,4 @@
 import { Router } from 'express';
-
 import {
     validateForgotPasswordData,
     validateLoginData,
@@ -9,7 +8,10 @@ import {
 import signupController from '../controllers/auth/signupController';
 import loginController from '../controllers/auth/loginController';
 import forgotPasswordController from '../controllers/auth/forgotPasswordController';
-import { verifyResetPasswordToken } from '../controllers/auth/resetPasswordController';
+import {
+    verifyResetPasswordToken,
+    resetUserPassword,
+} from '../controllers/auth/resetPasswordController';
 
 const authRoute = Router();
 
@@ -20,6 +22,8 @@ authRoute.post(
     validateForgotPasswordData,
     forgotPasswordController
 );
-authRoute.get('/reset-password/verify', verifyResetPasswordToken);
+authRoute
+    .get('/reset-password/verify', verifyResetPasswordToken)
+    .post('/reset-password/', validateResetPasswordData, resetUserPassword);
 
 export default authRoute;
