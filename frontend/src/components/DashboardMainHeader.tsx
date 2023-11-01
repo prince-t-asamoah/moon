@@ -31,9 +31,7 @@ export default function DashboardHeader() {
 
     const logout = () => {
         sessionStorage.removeItem('auth');
-        if (!auth) {
-            navigate('/login', { replace: true });
-        }
+        navigate('/login', { replace: true });
     };
 
     useEffect(() => {
@@ -74,7 +72,7 @@ export default function DashboardHeader() {
                             />
                         </button>
                     </DropdownTrigger>
-                    <DropdownMenu>
+                    <DropdownMenu aria-label="Static Actions">
                         <DropdownSection showDivider>
                             <DropdownItem key="profile" isReadOnly>
                                 <User
