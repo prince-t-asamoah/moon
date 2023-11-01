@@ -14,3 +14,8 @@ export interface LoginDTO {
 export interface ForgotPasswordDTO {
     email: string;
 }
+
+export interface ResetPasswordDTO {
+    password: string;
+    confirmPassword: string;
+}
