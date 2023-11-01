@@ -36,9 +36,14 @@ export const signupSchema = yup.object().shape({
         .email('Invalid email format'),
 });
 
-export const schema = yup.object().shape({
-    firstName: yup.string().required('First Name is required'),
-    lastName: yup.string().required('Last Name is required'),
+export const forgotPasswordSchema = yup.object().shape({
+    email: yup
+        .string()
+        .required('Email is required')
+        .email('Invalid email format'),
+});
+
+export const resetPasswordSchema = yup.object().shape({
     password: yup
         .string()
         .required('Password is required')
@@ -51,15 +56,4 @@ export const schema = yup.object().shape({
         .string()
         .required('Confirm password is required')
         .oneOf([yup.ref('password')], 'Passwords must match'),
-    email: yup
-        .string()
-        .required('Email is required')
-        .email('Invalid email format'),
-});
-
-export const forgotPasswordSchema = yup.object().shape({
-    email: yup
-        .string()
-        .required('Email is required')
-        .email('Invalid email format'),
 });
