@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Prisma } from '@prisma/client';
+import { Prisma, PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 
 import { SignupDTO } from '../../@types/authDTO';
@@ -30,7 +30,7 @@ export default function signupUser(req: Request, res: Response) {
                     },
                 });
             }
-        } catch (error) {
+        } catch (error: any) {
             if (
                 error instanceof Prisma.PrismaClientKnownRequestError &&
                 error.code === 'P2002'
