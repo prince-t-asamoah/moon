@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { getAuth } from '../util/getAuth';
 
 function createAxiosInstance(headers: object): AxiosInstance {
-    const baseURL = import.meta.env.VITE_APP_BASEURL;
+    const baseURL = import.meta.env.VITE_APP_API_BASEURL;
 
     const instance = axios.create({
         baseURL,
