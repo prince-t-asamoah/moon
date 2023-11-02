@@ -4,6 +4,7 @@
     "description": "A backend server for moon app built with Express.js and TypeScript.",
     "scripts": {
         "dev": "nodemon",
+        "start": "cross-env NODE_ENV=production node ./build/app.js",
         "build": "tsc",
         "prod:build": "npm install -g typescript && npm install && npx prisma generate --schema=./src/prisma/schema.prisma && tsc"
     },
