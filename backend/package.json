@@ -4,8 +4,7 @@
   "description": "A backend server for moon app built with Express.js and TypeScript.",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc",
-    "install": "npm run install"
+    "build": "tsc"
   },
   "keywords": [
     "task",
