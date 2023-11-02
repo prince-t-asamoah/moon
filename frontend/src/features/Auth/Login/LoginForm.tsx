@@ -45,7 +45,7 @@ export default function LoginForm() {
             })
             .catch((error) => {
                 setIsSubmiting(false);
-                toast.error(error.message);
+                toast.error(error);
             });
     };
 
