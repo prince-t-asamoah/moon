@@ -32,7 +32,7 @@ export default function signupUser(req: Request, res: Response) {
             }
         } catch (error: any) {
             if (
-                error instanceof Prisma.PrismaClientKnownRequestError &&
+                error instanceof Prisma?.PrismaClientKnownRequestError &&
                 error.code === 'P2002'
                 )
                 return res.status(500).json({
